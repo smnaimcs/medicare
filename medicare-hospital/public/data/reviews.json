@@ -1,0 +1,48 @@
+[
+    {
+      "review_id": 2,
+      "patient_name": "Ayesha Sultana",
+      "doctor_id": 3,
+      "doctor_name": "Dr. Tanvir Rahman",
+      "rating": 4.2,
+      "comment": "Professional and helpful. Waiting time could be improved but overall great experience.",
+      "review_date": "2025-02-12"
+    },
+    {
+      "review_id": 3,
+      "patient_name": "Hasibul Islam",
+      "doctor_id": 2,
+      "doctor_name": "Dr. Farhana Sharmeen",
+      "rating": 4.8,
+      "comment": "Very caring and supportive. Provided accurate diagnosis and proper guidance.",
+      "review_date": "2025-02-10"
+    },
+    {
+      "review_id": 4,
+      "patient_name": "Rafi Ahmed",
+      "doctor_id": 5,
+      "doctor_name": "Dr. Kamrul Hasan",
+      "rating": 3.9,
+      "comment": "Treatment was good but appointment scheduling needs improvement.",
+      "review_date": "2025-02-07"
+    },
+    {
+      "review_id": 5,
+      "patient_name": "Nusrat Jahan",
+      "doctor_id": 4,
+      "doctor_name": "Dr. Shaila Akter",
+      "rating": 5,
+      "comment": "Highly experienced and polite. Great attention to detail and patient care.",
+      "review_date": "2025-02-05"
+    },
+    {
+      "review_id": 6,
+      "patient_name": "Tanvir Hossain",
+      "doctor_id": 6,
+      "doctor_name": "Dr. Mahmudul Hasan",
+      "rating": 4.5,
+      "comment": "Good consultation and fast response. Prescribed medicine worked effectively.",
+      "review_date": "2025-02-03"
+    }
+  ]
+  

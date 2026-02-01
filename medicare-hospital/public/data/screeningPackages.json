@@ -1,0 +1,211 @@
+[
+    {
+      "id": 1,
+      "title": "Executive Basic (Men)",
+      "shortDescription": "Comprehensive health screening for men.",
+      "image": "/assets/packages/executive_basic_men.png",
+      "ageWiseAmount": {
+        "18-30": 3500,
+        "31-40": 4200,
+        "41-50": 4800,
+        "51+": 5500
+      },
+      "tests": {
+        "Blood Test Essential": [
+          "CBC & ESR",
+          "Liver Function Test",
+          "Renal Function Test",
+          "Fasting Lipid Profile",
+          "Serum Calcium",
+          "Serum Phosphate",
+          "TSH",
+          "Blood Grouping & Rh Typing"
+        ],
+        "Blood Test (Disease Screening)": [
+          "Fasting Blood Sugar",
+          "2 Hours Post Prandial Blood Glucose"
+        ],
+        "Cardiac Investigation": ["ECG"],
+        "Blood Test: Tumour Markers": ["Serum PSA"],
+        "Imaging Tests": ["X-Ray of Chest PA View"],
+        "Clinical Pathology": ["Urine R/E", "Stool R/E"],
+        "Clinical Examination": [
+          "Vital Signs & Physical Exam",
+          "Body Mass Indexing",
+          "Consultation with Physician"
+        ],
+        "Dietician Consultation": ["Dietician Consultation"]
+      }
+    },
+  
+    {
+      "id": 2,
+      "title": "Executive Basic (Women)",
+      "shortDescription": "Complete wellness screening for women.",
+      "image": "/assets/packages/executive_basic_women.png",
+      "ageWiseAmount": {
+        "18-30": 3600,
+        "31-40": 4500,
+        "41-50": 5200,
+        "51+": 5900
+      },
+      "tests": {
+        "Blood Test Essential": [
+          "CBC & ESR",
+          "Liver Function Test",
+          "Renal Function Test",
+          "Fasting Lipid Profile",
+          "Serum Calcium",
+          "Serum Phosphate",
+          "TSH",
+          "Blood Grouping & Rh Typing"
+        ],
+        "Blood Test (Disease Screening)": [
+          "Fasting Blood Sugar",
+          "2 Hours Post Prandial Blood Glucose"
+        ],
+        "Cardiac Investigation": ["ECG"],
+        "Imaging Tests": [
+          "X-Ray of Chest PA View",
+          "Ultrasound Breast (if required)"
+        ],
+        "Clinical Pathology": ["Urine R/E", "Stool R/E"],
+        "Clinical Examination": [
+          "Vital Signs & Physical Exam",
+          "Body Mass Indexing",
+          "Consultation with Physician",
+          "Gynecological Consultation"
+        ],
+        "Dietician Consultation": ["Dietician Consultation"]
+      }
+    },
+  
+    {
+      "id": 3,
+      "title": "Cardiac Screening Package",
+      "shortDescription": "Heart health evaluation with essential cardiac tests.",
+      "image": "/public/cardiac_screening.jpg",
+      "ageWiseAmount": {
+        "18-30": 4000,
+        "31-40": 5200,
+        "41-50": 6500,
+        "51+": 7500
+      },
+      "tests": {
+        "Blood Tests": [
+          "Fasting Blood Sugar",
+          "Lipid Profile",
+          "Cardiac Enzymes",
+          "Hs-CRP"
+        ],
+        "Cardiac Investigation": [
+          "ECG",
+          "Echocardiogram",
+          "Treadmill Test (TMT)"
+        ],
+        "Imaging Tests": ["Chest X-Ray (PA View)"],
+        "Clinical Examination": [
+          "Blood Pressure Check",
+          "BMI Check",
+          "Consultation with Cardiologist"
+        ]
+      }
+    },
+  
+    {
+      "id": 4,
+      "title": "Diabetes Screening Package",
+      "shortDescription": "Early detection and monitoring of diabetes.",
+      "image": "/assets/packages/diabetes_screening.png",
+      "ageWiseAmount": {
+        "18-30": 2200,
+        "31-40": 2600,
+        "41-50": 3000,
+        "51+": 3500
+      },
+      "tests": {
+        "Blood Tests": [
+          "Fasting Blood Sugar",
+          "2Hrs PP Blood Sugar",
+          "HbA1c",
+          "Lipid Profile",
+          "Serum Creatinine"
+        ],
+        "Urine Tests": ["Urine R/E", "Microalbumin"],
+        "Clinical Examination": [
+          "Neuropathy Assessment",
+          "Vital Signs",
+          "Endocrinology Consultation"
+        ]
+      }
+    },
+  
+    {
+      "id": 5,
+      "title": "Women Wellness Package",
+      "shortDescription": "Complete health checkup focused on women's needs.",
+      "image": "/assets/packages/women_wellness.png",
+      "ageWiseAmount": {
+        "18-30": 3900,
+        "31-40": 4500,
+        "41-50": 5300,
+        "51+": 6000
+      },
+      "tests": {
+        "Blood Tests": [
+          "CBC",
+          "Thyroid Profile",
+          "Lipid Profile",
+          "Blood Sugar Tests"
+        ],
+        "Gynecology Tests": [
+          "Pap Smear",
+          "Breast Examination",
+          "Pelvic Ultrasound"
+        ],
+        "Clinical Examination": [
+          "Vital Signs",
+          "BMI",
+          "Consultation with Gynecologist"
+        ]
+      }
+    },
+  
+    {
+      "id": 6,
+      "title": "Full Body Premium Checkup",
+      "shortDescription": "Highest-level full body screening for adults.",
+      "image": "/assets/packages/full_body_premium.png",
+      "ageWiseAmount": {
+        "18-30": 8000,
+        "31-40": 9500,
+        "41-50": 11000,
+        "51+": 13000
+      },
+      "tests": {
+        "Blood Tests": [
+          "CBC",
+          "LFT",
+          "RFT",
+          "HbA1c",
+          "Thyroid Panel",
+          "Vitamin D",
+          "Vitamin B12",
+          "Lipid Profile",
+          "Blood Sugar Tests"
+        ],
+        "Imaging Tests": [
+          "Chest X-Ray",
+          "Ultrasonography (Whole Abdomen)"
+        ],
+        "Cardiac Investigation": ["ECG", "ECHO"],
+        "Clinical Pathology": ["Urine R/E", "Stool R/E"],
+        "Clinical Examination": [
+          "General Physician Consultation",
+          "BMI & Body Composition",
+          "Dietician Consultation"
+        ]
+      }
+    }
+  ]
+  

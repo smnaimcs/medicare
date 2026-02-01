@@ -1,0 +1,171 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Ahsan Kabir",
+    "specialization": "Cardiology",
+    "experience": "12 Years",
+    "rating": 4.8,
+    "fee": 40
+  },
+  {
+    "id": 2,
+    "name": "Dr. Nafisa Rahman",
+    "specialization": "Cardiology",
+    "experience": "10 Years",
+    "rating": 4.7,
+    "fee": 15
+  },
+
+  {
+    "id": 3,
+    "name": "Dr. Imran Hossain",
+    "specialization": "Neurology",
+    "experience": "15 Years",
+    "rating": 4.9,
+    "fee": 10
+  },
+  {
+    "id": 4,
+    "name": "Dr. Farzana Akter",
+    "specialization": "Neurology",
+    "experience": "9 Years",
+    "rating": 4.6,
+    "fee": 25
+  },
+
+  {
+    "id": 5,
+    "name": "Dr. Mahmudul Hasan",
+    "specialization": "Mother & Child",
+    "experience": "11 Years",
+    "rating": 4.7,
+    "fee": 10
+  },
+  {
+    "id": 6,
+    "name": "Dr. Sumaiya Sultana",
+    "specialization": "Mother & Child",
+    "experience": "8 Years",
+    "rating": 4.5,
+    "fee": 20
+  },
+
+  {
+    "id": 7,
+    "name": "Dr. Arif Ahmed",
+    "specialization": "Orthopedics",
+    "experience": "13 Years",
+    "rating": 4.8,
+    "fee": 10
+  },
+  {
+    "id": 8,
+    "name": "Dr. Tania Islam",
+    "specialization": "Orthopedics",
+    "experience": "7 Years",
+    "rating": 4.6,
+    "fee": 30
+  },
+
+  {
+    "id": 9,
+    "name": "Dr. Rashedul Karim",
+    "specialization": "Renal Care",
+    "experience": "14 Years",
+    "rating": 4.9,
+    "fee": 10
+  },
+  {
+    "id": 10,
+    "name": "Dr. Mousumi Roy",
+    "specialization": "Renal Care",
+    "experience": "10 Years",
+    "rating": 4.7,
+    "fee": 15
+  },
+
+  {
+    "id": 11,
+    "name": "Dr. Jahidul Alam",
+    "specialization": "Dentistry",
+    "experience": "16 Years",
+    "rating": 4.8,
+    "fee": 40
+  },
+  {
+    "id": 12,
+    "name": "Dr. Sabrina Noor",
+    "specialization": "Dentistry",
+    "experience": "6 Years",
+    "rating": 4.6,
+    "fee": 30
+  },
+
+  {
+    "id": 13,
+    "name": "Dr. Omar Faruq",
+    "specialization": "Dermatology",
+    "experience": "9 Years",
+    "rating": 4.5,
+    "fee": 10
+  },
+  {
+    "id": 14,
+    "name": "Dr. Nazmun Jahan",
+    "specialization": "Dermatology",
+    "experience": "12 Years",
+    "rating": 4.8,
+    "fee": 15
+  },
+
+  {
+    "id": 15,
+    "name": "Dr. Tanvir Mahmud",
+    "specialization": "ENT",
+    "experience": "18 Years",
+    "rating": 4.9,
+    "fee": 25
+  },
+  {
+    "id": 16,
+    "name": "Dr. Hasina Anwar",
+    "specialization": "ENT",
+    "experience": "11 Years",
+    "rating": 4.7,
+    "fee": 10
+  },
+
+  {
+    "id": 17,
+    "name": "Dr. Kamrul Bashar",
+    "specialization": "ICU",
+    "experience": "13 Years",
+    "rating": 4.8,
+    "fee": 10
+  },
+  {
+    "id": 18,
+    "name": "Dr. Lamiya Chowdhury",
+    "specialization": "ICU",
+    "experience": "5 Years",
+    "rating": 4.4,
+    "fee": 40
+  },
+
+  {
+    "id": 19,
+    "name": "Dr. Abdullah Al Mamun",
+    "specialization": "Medicine",
+    "experience": "7 Years",
+    "rating": 4.6,
+    "fee": 25
+  },
+  {
+    "id": 20,
+    "name": "Dr. Shaila Ferdous",
+    "specialization": "Medicine",
+    "experience": "10 Years",
+    "rating": 4.7,
+    "fee": 30
+  }
+]
