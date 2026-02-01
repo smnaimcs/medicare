@@ -1195,11 +1195,11 @@ export default function Register() {
                   className="w-full px-4 py-3 border-2 border-gray-400 rounded-xl focus:ring-2 focus:ring-gray-800 focus:border-transparent outline-none transition bg-white font-medium text-gray-800"
                 >
                   <option value="patient">🏥 Patient</option>
-                  <option value="doctor">👨‍⚕️ Doctor</option>
+                  {/* <option value="doctor">👨‍⚕️ Doctor</option>
                   <option value="nurse">👩‍⚕️ Nurse</option>
                   <option value="lab_technician">🔬 Lab Technician</option>
-                  <option value="staff">👤 Staff</option>
-                  <option value="admin">⚙️ Admin</option>
+                  <option value="staff">👤 Staff</option> */}
+                  {/* <option value="admin">⚙️ Admin</option> */}
                 </select>
               </div>
 

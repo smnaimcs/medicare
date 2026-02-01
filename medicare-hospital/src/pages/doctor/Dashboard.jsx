@@ -100,14 +100,6 @@ function DoctorDashboard({ setActiveSection }) {
       onClick: () => setActiveSection('/schedule'),
     },
     {
-      title: 'Medical Records',
-      value: stats.medical_records || 0,
-      icon: <FaFileMedical className="text-4xl" />,
-      gradient: 'from-slate-600 to-slate-800',
-      action: 'Patient Records',
-      onClick: () => setActiveSection('/medicalrecords'),
-    },
-    {
       title: 'Patients',
       value: '',
       icon: <FaUsers className="text-4xl" />,
@@ -132,11 +124,6 @@ function DoctorDashboard({ setActiveSection }) {
       title: 'Prescriptions',
       icon: <FaPrescriptionBottleAlt className="text-3xl" />,
       onClick: () => setActiveSection('/prescriptions'),
-    },
-    {
-      title: 'Medical Records',
-      icon: <FaFileMedical className="text-3xl" />,
-      onClick: () => setActiveSection('/medicalrecords'),
     },
   ];
 

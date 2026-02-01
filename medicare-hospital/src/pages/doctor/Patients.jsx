@@ -20,18 +20,18 @@
 //       setLoading(true);
 //       const response = await doctorService.getAppointments();
 //       const appointments = response.appointments || [];
-      
+
 //       // Extract unique patients
 //       const uniquePatients = [];
 //       const patientIds = new Set();
-      
+
 //       appointments.forEach(appointment => {
 //         if (!patientIds.has(appointment.patient.id)) {
 //           patientIds.add(appointment.patient.id);
 //           uniquePatients.push(appointment.patient);
 //         }
 //       });
-      
+
 //       setPatients(uniquePatients);
 //     } catch (error) {
 //       setError('Failed to fetch patients');
@@ -89,28 +89,28 @@
 //                     : 'Age: Unknown'}
 //                 </span>
 //               </div>
-              
+
 //               <div className="patient-details">
 //                 <div className="detail-item">
 //                   <label>Email:</label>
 //                   <span>{patient.user.email}</span>
 //                 </div>
-                
+
 //                 <div className="detail-item">
 //                   <label>Phone:</label>
 //                   <span>{patient.user.phone || 'Not provided'}</span>
 //                 </div>
-                
+
 //                 <div className="detail-item">
 //                   <label>Blood Group:</label>
 //                   <span>{patient.blood_group || 'Not provided'}</span>
 //                 </div>
-                
+
 //                 <div className="detail-item">
 //                   <label>Emergency Contact:</label>
 //                   <span>{patient.emergency_contact || 'Not provided'}</span>
 //                 </div>
-                
+
 //                 <div className="detail-item">
 //                   <label>Insurance:</label>
 //                   <span>{patient.insurance_info || 'Not provided'}</span>
@@ -298,17 +298,17 @@
 //       setLoading(true);
 //       const response = await doctorService.getAppointments();
 //       const appointments = response.appointments || [];
-      
+
 //       const uniquePatients = [];
 //       const patientIds = new Set();
-      
+
 //       appointments.forEach(appointment => {
 //         if (!patientIds.has(appointment.patient.id)) {
 //           patientIds.add(appointment.patient.id);
 //           uniquePatients.push(appointment.patient);
 //         }
 //       });
-      
+
 //       setPatients(uniquePatients);
 //     } catch (error) {
 //       setError('Failed to fetch patients');
@@ -364,7 +364,7 @@
 //                     : 'Age: Unknown'}
 //                 </span>
 //               </div>
-              
+
 //               <div className="space-y-2 text-sm text-gray-600 mb-4">
 //                 <div className="flex justify-between"><span>Email:</span> <span>{patient.user.email}</span></div>
 //                 <div className="flex justify-between"><span>Phone:</span> <span>{patient.user.phone || 'Not provided'}</span></div>
@@ -538,17 +538,17 @@ function DoctorPatients() {
       setLoading(true);
       const response = await doctorService.getAppointments();
       const appointments = response.appointments || [];
-      
+
       const uniquePatients = [];
       const patientIds = new Set();
-      
+
       appointments.forEach(appointment => {
         if (!patientIds.has(appointment.patient.id)) {
           patientIds.add(appointment.patient.id);
           uniquePatients.push(appointment.patient);
         }
       });
-      
+
       setPatients(uniquePatients);
     } catch (error) {
       setError('Failed to fetch patients');
@@ -719,8 +719,8 @@ function DoctorPatients() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {patients.map((patient, index) => (
-              <div 
-                key={patient.id} 
+              <div
+                key={patient.id}
                 className={`opacity-0 animate-fadeInUp stagger-${Math.min(index + 1, 6)}`}
               >
                 <div className="card-hover bg-white rounded-xl shadow-md hover:shadow-xl border border-gray-200 p-6 h-full flex flex-col">
@@ -740,14 +740,14 @@ function DoctorPatients() {
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          {patient.user.date_of_birth ? 
-                            `Age: ${new Date().getFullYear() - new Date(patient.user.date_of_birth).getFullYear()}` 
+                          {patient.user.date_of_birth ?
+                            `Age: ${new Date().getFullYear() - new Date(patient.user.date_of_birth).getFullYear()}`
                             : 'Age: Unknown'}
                         </span>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Patient Information */}
                   <div className="space-y-3 mb-6 flex-grow">
                     <div className="info-row flex items-center justify-between text-sm py-2">
@@ -761,7 +761,7 @@ function DoctorPatients() {
                         {patient.user.email}
                       </span>
                     </div>
-                    
+
                     <div className="info-row flex items-center justify-between text-sm py-2">
                       <span className="text-gray-500 flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -773,7 +773,7 @@ function DoctorPatients() {
                         {patient.user.phone || 'Not provided'}
                       </span>
                     </div>
-                    
+
                     <div className="info-row flex items-center justify-between text-sm py-2">
                       <span className="text-gray-500 flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -785,7 +785,7 @@ function DoctorPatients() {
                         {patient.blood_group || 'Not provided'}
                       </span>
                     </div>
-                    
+
                     <div className="info-row flex items-center justify-between text-sm py-2">
                       <span className="text-gray-500 flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -797,7 +797,7 @@ function DoctorPatients() {
                         {patient.emergency_contact || 'Not provided'}
                       </span>
                     </div>
-                    
+
                     <div className="info-row flex items-center justify-between text-sm py-2">
                       <span className="text-gray-500 flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -812,7 +812,7 @@ function DoctorPatients() {
                   </div>
 
                   {/* Action Button */}
-                  <button 
+                  <button
                     onClick={() => {
                       setSelectedPatient(patient);
                       fetchMedicalHistory(patient.id);
@@ -915,8 +915,8 @@ function MedicalHistoryModal({ patient, medicalHistory, onClose }) {
               <p className="text-gray-600">{patient.user.first_name} {patient.user.last_name}</p>
             </div>
           </div>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 hover:rotate-90"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -927,10 +927,9 @@ function MedicalHistoryModal({ patient, medicalHistory, onClose }) {
 
         {/* Tabs */}
         <div className="flex gap-2 p-6 pb-0 border-b border-gray-100">
-          <button 
-            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${
-              activeTab === 'diagnoses' ? 'active' : 'text-gray-600'
-            }`}
+          <button
+            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${activeTab === 'diagnoses' ? 'active' : 'text-gray-600'
+              }`}
             onClick={() => setActiveTab('diagnoses')}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -938,10 +937,9 @@ function MedicalHistoryModal({ patient, medicalHistory, onClose }) {
             </svg>
             Diagnoses
           </button>
-          <button 
-            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${
-              activeTab === 'test-reports' ? 'active' : 'text-gray-600'
-            }`}
+          <button
+            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${activeTab === 'test-reports' ? 'active' : 'text-gray-600'
+              }`}
             onClick={() => setActiveTab('test-reports')}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -949,10 +947,9 @@ function MedicalHistoryModal({ patient, medicalHistory, onClose }) {
             </svg>
             Test Reports
           </button>
-          <button 
-            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${
-              activeTab === 'prescriptions' ? 'active' : 'text-gray-600'
-            }`}
+          <button
+            className={`tab-button flex-1 py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 ${activeTab === 'prescriptions' ? 'active' : 'text-gray-600'
+              }`}
             onClick={() => setActiveTab('prescriptions')}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1067,60 +1064,92 @@ function MedicalHistoryModal({ patient, medicalHistory, onClose }) {
           )}
 
           {activeTab === 'prescriptions' && (
-            <div className="space-y-4">
-              {medicalHistory.prescriptions && medicalHistory.prescriptions.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                    <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            <div className="space-y-6 animate-fadeIn">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-bold text-gray-800">Prescription History</h3>
+                <span className="text-sm text-gray-500 font-medium">
+                  {medicalHistory.prescriptions?.length || 0} Records Found
+                </span>
+              </div>
+
+              {!medicalHistory.prescriptions || medicalHistory.prescriptions.length === 0 ? (
+                <div className="bg-gray-50 rounded-2xl p-12 text-center border-2 border-dashed border-gray-200">
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                    <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
                   </div>
-                  <p className="text-gray-500 font-medium">No prescriptions found.</p>
+                  <h4 className="text-lg font-bold text-gray-800">No prescriptions found</h4>
+                  <p className="text-gray-500 mt-1">This patient does not have any recorded prescriptions.</p>
                 </div>
               ) : (
-                medicalHistory.prescriptions?.map((prescription) => (
-                  <div key={prescription.id} className="history-card bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div className="flex items-start justify-between mb-4">
-                      <h4 className="text-lg font-bold text-gray-800">{prescription.medicine_name}</h4>
-                      <span className="px-3 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-full">
-                        Prescription
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <span className="text-sm font-semibold text-gray-700">Dosage:</span>
-                        <p className="text-gray-600 mt-1">{prescription.dosage}</p>
+                <div className="grid grid-cols-1 gap-4">
+                  {medicalHistory.prescriptions.map((prescription, idx) => (
+                    <div
+                      key={prescription.id}
+                      className={`group bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all stagger-${Math.min(idx + 1, 6)}`}
+                    >
+                      <div className="flex justify-between items-start mb-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-blue-50 group-hover:bg-blue-600 rounded-xl flex items-center justify-center transition-colors">
+                            <svg className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-800 uppercase tracking-tight">{prescription.medicine_name}</h4>
+                            <div className="flex items-center gap-2 mt-0.5">
+                              <span className="text-xs font-bold px-2 py-0.5 bg-gray-100 rounded text-gray-600">PRESCRIBED</span>
+                              <span className="text-xs text-gray-400">#PRES-{prescription.id}</span>
+                            </div>
+                          </div>
+                        </div>
+                        {prescription.is_dispensed ? (
+                          <span className="px-3 py-1 bg-green-50 text-green-700 text-[10px] font-black rounded-full border border-green-100 uppercase tracking-wider">Dispensed</span>
+                        ) : (
+                          <span className="px-3 py-1 bg-amber-50 text-amber-700 text-[10px] font-black rounded-full border border-amber-100 uppercase tracking-wider">Pending</span>
+                        )}
                       </div>
-                      <div>
-                        <span className="text-sm font-semibold text-gray-700">Frequency:</span>
-                        <p className="text-gray-600 mt-1">{prescription.frequency}</p>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
+                        <div className="bg-gray-50 rounded-xl p-3">
+                          <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Dosage</label>
+                          <p className="text-sm font-bold text-gray-800">{prescription.dosage}</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-xl p-3">
+                          <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Freq</label>
+                          <p className="text-sm font-bold text-gray-800">{prescription.frequency}</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-xl p-3">
+                          <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-1">Duration</label>
+                          <p className="text-sm font-bold text-gray-800">{prescription.duration || 'N/A'}</p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-sm font-semibold text-gray-700">Duration:</span>
-                        <p className="text-gray-600 mt-1">{prescription.duration}</p>
-                      </div>
-                      <div className="col-span-2">
-                        <span className="text-sm font-semibold text-gray-700">Instructions:</span>
-                        <p className="text-gray-600 mt-1">{prescription.instructions}</p>
+
+                      {prescription.instructions && (
+                        <div className="bg-blue-50/30 rounded-xl p-4 border border-blue-50/50 mb-4">
+                          <label className="text-[10px] font-bold text-blue-500 uppercase tracking-widest block mb-1">Clinical Instructions</label>
+                          <p className="text-sm text-gray-700 leading-relaxed italic">"{prescription.instructions}"</p>
+                        </div>
+                      )}
+
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-[11px] font-medium text-gray-400">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          Created on {formatDate(prescription.created_at)}
+                        </div>
+                        <button className="text-blue-600 font-bold text-xs hover:underline flex items-center gap-1.5 p-1">
+                          Print Prescription
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                          </svg>
+                        </button>
                       </div>
                     </div>
-                    <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-500">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Prescribed: {formatDate(prescription.created_at)}
-                    </div>
-                  </div>
-                )) || (
-                  <div className="text-center py-12">
-                    <div className="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                      <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                      </svg>
-                    </div>
-                    <p className="text-gray-500 font-medium">No prescriptions data available.</p>
-                  </div>
-                )
+                  ))}
+                </div>
               )}
             </div>
           )}

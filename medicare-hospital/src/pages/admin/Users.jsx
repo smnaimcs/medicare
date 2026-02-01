@@ -83,7 +83,7 @@
 // //       patient: 'role-patient',
 // //       staff: 'role-staff'
 // //     };
-    
+
 // //     return <span className={`role-badge ${roleColors[role] || ''}`}>{role}</span>;
 // //   };
 
@@ -494,7 +494,7 @@
 //       patient: 'badge badge-info',
 //       staff: 'badge badge-secondary'
 //     };
-    
+
 //     return <span className={roleColors[role] || 'badge'}>{role}</span>;
 //   };
 
@@ -814,6 +814,7 @@
 // src/pages/admin/Users.jsx
 import React, { useState, useEffect } from 'react';
 import adminService from '../../services/adminService';
+import authService from '../../services/authService';
 
 function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -827,6 +828,7 @@ function AdminUsers() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
 
   useEffect(() => {
     fetchUsers();
@@ -990,7 +992,7 @@ function AdminUsers() {
       patient: 'bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-300',
       staff: 'bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 border border-orange-300'
     };
-    
+
     return (
       <span className={`px-3 py-1 rounded-full text-xs font-semibold ${roleStyles[role.toLowerCase()] || 'bg-gray-100 text-gray-700'}`}>
         {role}
@@ -999,7 +1001,7 @@ function AdminUsers() {
   };
 
   const getStatusBadge = (isActive) => {
-    return isActive ? 
+    return isActive ?
       <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-300">Active</span> :
       <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-red-100 to-red-200 text-red-700 border border-red-300">Inactive</span>;
   };
@@ -1040,6 +1042,19 @@ function AdminUsers() {
           <p className="text-gray-500 ml-7">Manage and monitor all system users</p>
         </div>
 
+        {/* Register Button */}
+        <div className="flex justify-end opacity-0 animate-fadeInUp delay-100">
+          <button
+            onClick={() => setShowRegisterModal(true)}
+            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105 flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+            Register New User
+          </button>
+        </div>
+
         {/* Filters Section */}
         <div className="opacity-0 animate-slideInRight delay-100 bg-white rounded-xl shadow-md border border-gray-200 p-6">
           <div className="flex flex-wrap gap-4 items-center">
@@ -1050,9 +1065,9 @@ function AdminUsers() {
                 </svg>
                 Filter by Role
               </label>
-              <select 
-                name="role" 
-                value={filters.role} 
+              <select
+                name="role"
+                value={filters.role}
                 onChange={handleFilterChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               >
@@ -1063,7 +1078,7 @@ function AdminUsers() {
                 <option value="ADMIN">Admin</option>
               </select>
             </div>
-            
+
             <div className="flex items-end gap-3">
               <div className="bg-gradient-to-br from-blue-50 to-blue-100 px-6 py-4 rounded-lg border border-blue-200">
                 <div className="text-sm text-blue-600 font-semibold">Total Users</div>
@@ -1157,15 +1172,14 @@ function AdminUsers() {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {users.map((user, index) => (
-                    <tr 
-                      key={user.id} 
-                      className={`table-row-hover opacity-0 animate-slideDown ${
-                        index === 0 ? 'delay-100' : 
-                        index === 1 ? 'delay-200' : 
-                        index === 2 ? 'delay-300' : 
-                        index === 3 ? 'delay-400' : 
-                        'delay-500'
-                      }`}
+                    <tr
+                      key={user.id}
+                      className={`table-row-hover opacity-0 animate-slideDown ${index === 0 ? 'delay-100' :
+                        index === 1 ? 'delay-200' :
+                          index === 2 ? 'delay-300' :
+                            index === 3 ? 'delay-400' :
+                              'delay-500'
+                        }`}
                     >
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
@@ -1193,7 +1207,7 @@ function AdminUsers() {
                       <td className="px-6 py-4 text-sm text-gray-600">{formatDate(user.created_at)}</td>
                       <td className="px-6 py-4">
                         <div className="flex gap-2">
-                          <button 
+                          <button
                             onClick={() => handleEditUser(user)}
                             className="p-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg transition-all duration-200 hover:scale-110"
                             title="Edit User"
@@ -1203,7 +1217,7 @@ function AdminUsers() {
                             </svg>
                           </button>
                           {user.role !== 'admin' && (
-                            <button 
+                            <button
                               onClick={() => handleDeleteUser(user)}
                               className="p-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition-all duration-200 hover:scale-110"
                               title="Deactivate User"
@@ -1232,6 +1246,24 @@ function AdminUsers() {
               setSelectedUser(null);
             }}
             onSave={handleUpdateUser}
+          />
+        )}
+
+        {/* Register User Modal */}
+        {showRegisterModal && (
+          <RegisterUserModal
+            onClose={() => setShowRegisterModal(false)}
+            onSave={async (userData) => {
+              try {
+                await authService.register(userData);
+                alert('User registered successfully');
+                setShowRegisterModal(false);
+                fetchUsers();
+              } catch (err) {
+                alert('Failed to register user');
+                console.error(err);
+              }
+            }}
           />
         )}
 
@@ -1291,7 +1323,7 @@ function EditUserModal({ user, onClose, onSave }) {
             </div>
             <h3 className="text-2xl font-bold text-gray-800">Edit User</h3>
           </div>
-          <button 
+          <button
             className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 hover:rotate-90"
             onClick={onClose}
           >
@@ -1386,19 +1418,156 @@ function EditUserModal({ user, onClose, onSave }) {
           </div>
 
           <div className="flex justify-end gap-3 pt-4">
-            <button 
-              type="button" 
-              onClick={onClose} 
+            <button
+              type="button"
+              onClick={onClose}
               className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-all duration-200"
             >
               Cancel
             </button>
-            <button 
-              type="submit" 
-              disabled={loading} 
+            <button
+              type="submit"
+              disabled={loading}
               className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Updating...' : 'Update User'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+// Register User Modal Component
+function RegisterUserModal({ onClose, onSave }) {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    phone: '',
+    address: '',
+    role: 'patient',
+    license_number: '',
+    specialization: '',
+    employee_id: '',
+    department: '',
+    staff_type: ''
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    await onSave(formData);
+    setLoading(false);
+  };
+
+  return (
+    <div className="fixed inset-0 backdrop-blur-sm bg-black/30 flex items-center justify-center z-50 p-4 animate-fadeIn">
+      <div className="opacity-0 animate-modalSlideIn bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-gray-200 overflow-hidden">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center">
+              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800">Register New User</h3>
+          </div>
+          <button onClick={onClose} className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all">
+            <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+              <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+              <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Password *</label>
+              <input type="password" name="password" value={formData.password} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Role *</label>
+            <select name="role" value={formData.role} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-white">
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="nurse">Nurse</option>
+              <option value="lab_technician">Lab Technician</option>
+              <option value="staff">Staff</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          {/* Conditional Fields for Doctor */}
+          {formData.role === 'doctor' && (
+            <div className="grid grid-cols-2 gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100 animate-slideDown">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">License Number *</label>
+                <input type="text" name="license_number" value={formData.license_number} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Specialization *</label>
+                <input type="text" name="specialization" value={formData.specialization} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+              </div>
+            </div>
+          )}
+
+          {/* Conditional Fields for Staff/Nurse/Lab Tech */}
+          {['staff', 'nurse', 'lab_technician'].includes(formData.role) && (
+            <div className="grid grid-cols-3 gap-4 p-4 bg-purple-50 rounded-xl border border-purple-100 animate-slideDown">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Employee ID *</label>
+                <input type="text" name="employee_id" value={formData.employee_id} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Department *</label>
+                <input type="text" name="department" value={formData.department} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">Staff Type *</label>
+                <input type="text" name="staff_type" value={formData.staff_type} onChange={handleChange} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white" placeholder={formData.role === 'nurse' ? 'nurse' : formData.role === 'lab_technician' ? 'lab_technician' : 'staff'} />
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Address</label>
+              <input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" />
+            </div>
+          </div>
+
+          <div className="flex justify-end gap-3 pt-4 border-t mt-6">
+            <button type="button" onClick={onClose} className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-all">Cancel</button>
+            <button type="submit" disabled={loading} className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:scale-105 disabled:opacity-50">
+              {loading ? 'Registering...' : 'Register User'}
             </button>
           </div>
         </form>
@@ -1430,7 +1599,7 @@ function DeleteConfirmationModal({ user, onClose, onConfirm }) {
             </div>
             <h3 className="text-2xl font-bold text-gray-800">Deactivate User</h3>
           </div>
-          <button 
+          <button
             className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 hover:rotate-90"
             onClick={onClose}
           >
@@ -1446,7 +1615,7 @@ function DeleteConfirmationModal({ user, onClose, onConfirm }) {
             <div className="text-6xl">⚠️</div>
             <h4 className="text-lg font-semibold text-gray-800">Are you sure?</h4>
             <p className="text-gray-600">
-              You are about to deactivate <strong className="text-gray-800">{user.first_name} {user.last_name}</strong>. 
+              You are about to deactivate <strong className="text-gray-800">{user.first_name} {user.last_name}</strong>.
               This action cannot be undone.
             </p>
             <div className="bg-gray-100 p-4 rounded-lg space-y-2 text-left">
@@ -1466,15 +1635,15 @@ function DeleteConfirmationModal({ user, onClose, onConfirm }) {
           </div>
 
           <div className="flex justify-end gap-3 mt-6">
-            <button 
-              type="button" 
-              onClick={onClose} 
+            <button
+              type="button"
+              onClick={onClose}
               className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-all duration-200"
             >
               Cancel
             </button>
-            <button 
-              onClick={handleConfirm} 
+            <button
+              onClick={handleConfirm}
               disabled={loading}
               className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >

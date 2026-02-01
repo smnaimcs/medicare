@@ -1140,14 +1140,14 @@ const ANIM_STYLES = `
   .delay-500 { animation-delay: 0.5s;  }
 `;
 
-function NurseAttendance() {
+function NurseAttendance({ openLeaveModal }) {
   const [attendance, setAttendance] = useState([]);
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);   // full-screen spinner – first mount only
   const [contentLoading, setContentLoading] = useState(false); // subtle indicator inside tabs
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('attendance');
-  const [showLeaveModal, setShowLeaveModal] = useState(false);
+  const [activeTab, setActiveTab] = useState(openLeaveModal ? 'leave' : 'attendance');
+  const [showLeaveModal, setShowLeaveModal] = useState(openLeaveModal || false);
   const [filters, setFilters] = useState({
     start_date: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0],
     end_date: new Date().toISOString().split('T')[0]

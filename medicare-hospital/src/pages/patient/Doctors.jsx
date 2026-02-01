@@ -100,33 +100,33 @@
 // // //                 <h3>Dr. {doctor.user.first_name} {doctor.user.last_name}</h3>
 // // //                 {getAvailabilityBadge(doctor.is_available)}
 // // //               </div>
-              
+
 // // //               <div className="doctor-details">
 // // //                 <div className="detail-item">
 // // //                   <label>Specialization:</label>
 // // //                   <span>{doctor.specialization}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Qualification:</label>
 // // //                   <span>{doctor.qualification}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Experience:</label>
 // // //                   <span>{doctor.years_of_experience} years</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Consultation Fee:</label>
 // // //                   <span className="fee">${doctor.consultation_fee}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Contact:</label>
 // // //                   <span>{doctor.user.phone || 'Not provided'}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Address:</label>
 // // //                   <span>{doctor.user.address || 'Not provided'}</span>
@@ -228,7 +228,7 @@
 
 // // //   const handleBookingSubmit = async (e) => {
 // // //     e.preventDefault();
-    
+
 // // //     if (!bookingData.appointment_date || !bookingData.reason) {
 // // //       alert('Please fill in all required fields');
 // // //       return;
@@ -268,11 +268,11 @@
 // // //   const getNextAvailableTimeSlots = () => {
 // // //     const today = new Date();
 // // //     const slots = [];
-    
+
 // // //     for (let i = 1; i <= 7; i++) {
 // // //       const date = new Date(today);
 // // //       date.setDate(today.getDate() + i);
-      
+
 // // //       // Generate time slots from 9 AM to 5 PM
 // // //       for (let hour = 9; hour <= 17; hour++) {
 // // //         const timeString = `${hour.toString().padStart(2, '0')}:00`;
@@ -280,7 +280,7 @@
 // // //         slots.push(dateTimeString);
 // // //       }
 // // //     }
-    
+
 // // //     return slots;
 // // //   };
 
@@ -348,33 +348,33 @@
 // // //                 <h3>Dr. {doctor.user.first_name} {doctor.user.last_name}</h3>
 // // //                 {getAvailabilityBadge(doctor.is_available)}
 // // //               </div>
-              
+
 // // //               <div className="doctor-details">
 // // //                 <div className="detail-item">
 // // //                   <label>Specialization:</label>
 // // //                   <span>{doctor.specialization}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Qualification:</label>
 // // //                   <span>{doctor.qualification}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Experience:</label>
 // // //                   <span>{doctor.years_of_experience} years</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Consultation Fee:</label>
 // // //                   <span className="fee">${doctor.consultation_fee}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Contact:</label>
 // // //                   <span>{doctor.user.phone || 'Not provided'}</span>
 // // //                 </div>
-                
+
 // // //                 <div className="detail-item">
 // // //                   <label>Address:</label>
 // // //                   <span>{doctor.user.address || 'Not provided'}</span>
@@ -413,7 +413,7 @@
 // // //                 ×
 // // //               </button>
 // // //             </div>
-            
+
 // // //             {bookingSuccess ? (
 // // //               <div className="success-message">
 // // //                 <h3>Success!</h3>
@@ -1008,7 +1008,7 @@
 //       </div>
 //     );
 //   }
-  
+
 
 //   return (
 //     <div className="h-1/2 w-1/2 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 py-8 px-4 sm:px-6 lg:px-8">
@@ -1439,7 +1439,13 @@
 import React, { useState, useEffect } from 'react';
 import patientService from '../../services/patientService';
 
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 function Doctors() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -1488,6 +1494,17 @@ function Doctors() {
   };
 
   const handleBookAppointment = (doctor) => {
+    if (!user) {
+      // Redirect to login with return url
+      navigate('/login', { state: { redirectTo: '/doctors' } });
+      return;
+    }
+
+    if (user.role !== 'patient') {
+      alert("Access Denied: Only patients can book appointments. Please log in as a patient.");
+      return;
+    }
+
     setSelectedDoctor(doctor);
     setBookingData({
       doctor_id: doctor.id,
@@ -1783,11 +1800,10 @@ function Doctors() {
                   <button
                     onClick={() => handleBookAppointment(doctor)}
                     disabled={!doctor.is_available}
-                    className={`w-full py-3 px-4 rounded-xl font-semibold shadow-sm transition-all duration-200 flex items-center justify-center gap-2 ${
-                      doctor.is_available
-                        ? 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white hover:shadow-md'
-                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                    }`}
+                    className={`w-full py-3 px-4 rounded-xl font-semibold shadow-sm transition-all duration-200 flex items-center justify-center gap-2 ${doctor.is_available
+                      ? 'bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white hover:shadow-md'
+                      : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                      }`}
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -1885,11 +1901,10 @@ function Doctors() {
                           <button
                             key={slot}
                             type="button"
-                            className={`px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
-                              bookingData.appointment_date === slot
-                                ? 'bg-gray-700 text-white shadow-md'
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
-                            }`}
+                            className={`px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${bookingData.appointment_date === slot
+                              ? 'bg-gray-700 text-white shadow-md'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
+                              }`}
                             onClick={() =>
                               setBookingData({
                                 ...bookingData,

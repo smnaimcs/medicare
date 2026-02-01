@@ -27,7 +27,8 @@ import {
   FaMoneyBillWave,
   FaWallet,
   FaUserMd,
-  FaBolt
+  FaBolt,
+  FaPills
 } from 'react-icons/fa';
 
 function PatientDashboard({ setActiveSection }) {
@@ -114,6 +115,14 @@ function PatientDashboard({ setActiveSection }) {
       action: 'Browse Doctors',
       onClick: () => setActiveSection('/doctors'),
     },
+    {
+      title: 'Prescriptions',
+      value: stats.total_prescriptions || 0,
+      icon: <FaPills className="text-4xl" />,
+      gradient: 'from-slate-700 to-gray-900',
+      action: 'My Prescriptions',
+      onClick: () => setActiveSection('/patient-prescriptions'),
+    },
   ];
 
   const quickActions = [
@@ -136,6 +145,11 @@ function PatientDashboard({ setActiveSection }) {
       title: 'Billing & Payments',
       icon: <FaMoneyBillWave className="text-3xl" />,
       onClick: () => setActiveSection('/billing'),
+    },
+    {
+      title: 'Prescriptions',
+      icon: <FaPills className="text-3xl" />,
+      onClick: () => setActiveSection('/patient-prescriptions'),
     },
   ];
 

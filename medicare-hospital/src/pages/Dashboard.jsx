@@ -607,6 +607,7 @@ import NurseMedicalRecords from './nurse/MedicalRecords';
 import NursePatientArrival from './nurse/PatientArrival';
 import NurseVitalSigns from './nurse/VitalSigns';
 import PatientDashboard from './patient/Dashboard';
+import PatientPrescriptions from './patient/Prescriptions';
 import DoctorDashboard from './doctor/Dashboard';
 import DoctorMedicalRecords from './doctor/MedicalRecords';
 import StaffDashboard from './staff/Dashboard';
@@ -616,6 +617,12 @@ function Dashboard() {
   const userRole = user?.role || user?.user?.role;
 
   const [activeSection, setActiveSection] = useState('/dashboard');
+  const [sectionProps, setSectionProps] = useState({});
+
+  const navigateTo = (path, props = {}) => {
+    setActiveSection(path);
+    setSectionProps(props);
+  };
 
   // ➤ Extended role sections
   const sections = {
@@ -623,6 +630,7 @@ function Dashboard() {
       { key: 'dashboard', label: 'Dashboard', path: '/dashboard' },
       { key: 'appointments', label: 'My Appointments', path: '/appointments' },
       { key: 'records', label: 'Medical Records', path: '/records' },
+      { key: 'prescriptions', label: 'Prescriptions', path: '/patient-prescriptions' },
       { key: 'find_doctors', label: 'Find Doctors', path: '/doctors' },
       { key: 'billing', label: 'Billing & Payments', path: '/billing' },
     ],
@@ -632,7 +640,6 @@ function Dashboard() {
       { key: 'schedule', label: 'Appointment Schedule', path: '/schedule' },
       { key: 'patients', label: 'Patient Records', path: '/patients' },
       { key: 'prescriptions', label: 'Prescriptions', path: '/prescriptions' },
-      { key: 'medicalrecords', label: 'Medical Records', path: '/medicalrecords' },
     ],
 
     staff: [
@@ -675,17 +682,17 @@ function Dashboard() {
   const renderDashboardForRole = () => {
     switch (userRole) {
       case 'patient':
-        return <PatientDashboard setActiveSection={setActiveSection}></PatientDashboard> ;
+        return <PatientDashboard setActiveSection={navigateTo}></PatientDashboard>;
       case 'doctor':
-        return <DoctorDashboard setActiveSection={setActiveSection}></DoctorDashboard>
-      case 'admin': 
-        return <AdminDashboard setActiveSection={setActiveSection} />;
+        return <DoctorDashboard setActiveSection={navigateTo}></DoctorDashboard>
+      case 'admin':
+        return <AdminDashboard setActiveSection={navigateTo} />;
       case 'lab_technician':
-        return <LabTechnicianDashboard setActiveSection={setActiveSection}></LabTechnicianDashboard> ;
+        return <LabTechnicianDashboard setActiveSection={navigateTo}></LabTechnicianDashboard>;
       case 'nurse':
-        return <NurseDashboard setActiveSection={setActiveSection}></NurseDashboard>;
+        return <NurseDashboard setActiveSection={navigateTo}></NurseDashboard>;
       case 'staff':
-        return <StaffDashboard setActiveSection={setActiveSection}></StaffDashboard>
+        return <StaffDashboard setActiveSection={navigateTo}></StaffDashboard>
       default:
         return <h2 className="text-xl text-gray-500">Unknown role: {userRole}</h2>;
     }
@@ -698,35 +705,35 @@ function Dashboard() {
     }
 
     switch (activeSection) {
-      case '/appointments': return <Appointments />;
-      case '/records': return <MedicalRecords />;
-      case '/doctors': return <Doctors />;
-      case '/billing': return <Billing />;
-      case '/schedule': return <DoctorSchedule />;
-      case '/patients': return <DoctorPatients />;
-      case '/prescriptions': return <DoctorPrescriptions />;
-      case '/medicalrecords': return <DoctorMedicalRecords></DoctorMedicalRecords> ;
-      case '/users': return <AdminUsers />;
-      case '/adminappointments': return <AdminAppointments />;
-      case '/reports': return <AdminReports />;
-      case '/inventory': return <AdminInventory />;
-      case '/adminbilling': return <AdminBilling />;
-      case '/notifications': return <AdminNotifications />;
+      case '/appointments': return <Appointments {...sectionProps} />;
+      case '/records': return <MedicalRecords {...sectionProps} />;
+      case '/patient-prescriptions': return <PatientPrescriptions {...sectionProps} />;
+      case '/doctors': return <Doctors {...sectionProps} />;
+      case '/billing': return <Billing {...sectionProps} />;
+      case '/schedule': return <DoctorSchedule {...sectionProps} />;
+      case '/patients': return <DoctorPatients {...sectionProps} />;
+      case '/prescriptions': return <DoctorPrescriptions {...sectionProps} />;
+      case '/users': return <AdminUsers {...sectionProps} />;
+      case '/adminappointments': return <AdminAppointments {...sectionProps} />;
+      case '/reports': return <AdminReports {...sectionProps} />;
+      case '/inventory': return <AdminInventory {...sectionProps} />;
+      case '/adminbilling': return <AdminBilling {...sectionProps} />;
+      case '/notifications': return <AdminNotifications {...sectionProps} />;
 
       // ➤ NEW: LAB TECHNICIAN ROUTES (placeholders)
       case '/labattendence':
-        return <LabTechnicianAttendance></LabTechnicianAttendance> ;
+        return <LabTechnicianAttendance {...sectionProps} />;
       case '/testreports':
-        return <LabTechnicianTestReports></LabTechnicianTestReports> ;
+        return <LabTechnicianTestReports {...sectionProps} />;
       // ➤ NEW: NURSE ROUTES (placeholders)
       case '/nurseattendence':
-        return <NurseAttendance></NurseAttendance> ;
+        return <NurseAttendance {...sectionProps} />;
       case '/nurserecords':
-        return <NurseMedicalRecords></NurseMedicalRecords>   ;
+        return <NurseMedicalRecords {...sectionProps} />;
       case '/patientarrival':
-        return <NursePatientArrival></NursePatientArrival> ;
+        return <NursePatientArrival {...sectionProps} />;
       case '/vitals':
-        return <NurseVitalSigns></NurseVitalSigns> ;
+        return <NurseVitalSigns {...sectionProps} />;
 
       default:
         return <p>Section not found.</p>;
@@ -776,18 +783,17 @@ function Dashboard() {
             {/* <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Navigation</h3> */}
             {/* <div className="h-1 w-12 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full"></div> */}
           </div>
-          
+
           {sections[userRole]?.map((item) => {
             const isActive = activeSection === item.path;
             return (
               <button
                 key={item.key}
-                onClick={() => setActiveSection(item.path)}
-                className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all transform hover:scale-105 ${
-                  isActive 
-                    ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-lg' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                onClick={() => navigateTo(item.path)}
+                className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all transform hover:scale-105 ${isActive
+                  ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 {item.label}
               </button>

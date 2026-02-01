@@ -56,7 +56,7 @@
 // //       completed: 'status-completed',
 // //       cancelled: 'status-cancelled'
 // //     };
-    
+
 // //     return <span className={`status-badge ${statusColors[status] || ''}`}>{status}</span>;
 // //   };
 
@@ -107,7 +107,7 @@
 // //                 <h3>Appointment with Dr. {appointment.doctor.user.first_name} {appointment.doctor.user.last_name}</h3>
 // //                 {getStatusBadge(appointment.status)}
 // //               </div>
-              
+
 // //               <div className="appointment-details">
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
@@ -119,7 +119,7 @@
 // //                     <span>{appointment.duration} minutes</span>
 // //                   </div>
 // //                 </div>
-                
+
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
 // //                     <label>Doctor:</label>

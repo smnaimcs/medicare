@@ -22,8 +22,10 @@ class StaffService {
         params.append(key, filters[key]);
       }
     });
-    
-    const response = await axios.get(`${API_BASE_URL}/staff/attendance/history?${params}`);
+
+    const queryString = params.toString();
+    const url = queryString ? `${API_BASE_URL}/staff/attendance/history?${queryString}` : `${API_BASE_URL}/staff/attendance/history`;
+    const response = await axios.get(url);
     return response;
   }
 
@@ -51,8 +53,10 @@ class StaffService {
         params.append(key, filters[key]);
       }
     });
-    
-    const response = await axios.get(`${API_BASE_URL}/medical/test-reports?${params}`);
+
+    const queryString = params.toString();
+    const url = queryString ? `${API_BASE_URL}/medical/test-reports?${queryString}` : `${API_BASE_URL}/medical/test-reports`;
+    const response = await axios.get(url);
     return response;
   }
 
@@ -69,8 +73,10 @@ class StaffService {
         params.append(key, filters[key]);
       }
     });
-    
-    const response = await axios.get(`${API_BASE_URL}/medical/vital-signs?${params}`);
+
+    const queryString = params.toString();
+    const url = queryString ? `${API_BASE_URL}/medical/vital-signs?${queryString}` : `${API_BASE_URL}/medical/vital-signs`;
+    const response = await axios.get(url);
     return response;
   }
 
@@ -93,8 +99,10 @@ class StaffService {
         params.append(key, filters[key]);
       }
     });
-    
-    const response = await axios.get(`${API_BASE_URL}/medical/medical-records?${params}`);
+
+    const queryString = params.toString();
+    const url = queryString ? `${API_BASE_URL}/medical/medical-records?${queryString}` : `${API_BASE_URL}/medical/medical-records`;
+    const response = await axios.get(url);
     return response;
   }
 }

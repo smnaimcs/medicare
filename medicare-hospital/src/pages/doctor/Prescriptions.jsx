@@ -36,7 +36,7 @@
 //       // we'll filter from appointments or create a mock data structure
 //       const appointmentsResponse = await doctorService.getAppointments();
 //       const allAppointments = appointmentsResponse.appointments || [];
-      
+
 //       // Extract prescriptions from appointments (this would ideally come from a dedicated endpoint)
 //       const allPrescriptions = [];
 //       allAppointments.forEach(appointment => {
@@ -50,7 +50,7 @@
 //           });
 //         }
 //       });
-      
+
 //       setPrescriptions(allPrescriptions);
 //     } catch (error) {
 //       setError('Failed to fetch prescriptions');
@@ -153,7 +153,7 @@
 //                   </div>
 //                   {getDispensedStatus(prescription.is_dispensed)}
 //                 </div>
-                
+
 //                 <div className="prescription-details">
 //                   <div className="detail-row">
 //                     <div className="detail-item">
@@ -165,7 +165,7 @@
 //                       <span>{prescription.frequency}</span>
 //                     </div>
 //                   </div>
-                  
+
 //                   <div className="detail-row">
 //                     <div className="detail-item">
 //                       <label>Duration:</label>
@@ -245,7 +245,7 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-    
+
 //     if (!formData.medicine_name || !formData.dosage || !formData.appointment_id) {
 //       alert('Please fill in all required fields');
 //       return;
@@ -314,7 +314,7 @@
 //                 required
 //               />
 //             </div>
-            
+
 //             <div className="form-group">
 //               <label>Frequency</label>
 //               <input
@@ -405,7 +405,7 @@ function PrescriptionModal({ appointment, appointments, onClose, onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.medicine_name || !formData.dosage || !formData.appointment_id) {
       alert('Please fill in all required fields');
       return;
@@ -497,7 +497,7 @@ function PrescriptionModal({ appointment, appointments, onClose, onSuccess }) {
                 required
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Frequency
@@ -611,7 +611,7 @@ function DoctorPrescriptions() {
       // we'll filter from appointments or create a mock data structure
       const appointmentsResponse = await doctorService.getAppointments();
       const allAppointments = appointmentsResponse.appointments || [];
-      
+
       // Extract prescriptions from appointments (this would ideally come from a dedicated endpoint)
       const allPrescriptions = [];
       allAppointments.forEach(appointment => {
@@ -625,7 +625,7 @@ function DoctorPrescriptions() {
           });
         }
       });
-      
+
       setPrescriptions(allPrescriptions);
     } catch (error) {
       setError('Failed to fetch prescriptions');

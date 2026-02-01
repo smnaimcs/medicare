@@ -122,7 +122,7 @@
 // //       late: 'status-pending',
 // //       half_day: 'status-confirmed'
 // //     };
-    
+
 // //     return <span className={`status-badge ${statusColors[status] || ''}`}>{status}</span>;
 // //   };
 
@@ -132,7 +132,7 @@
 // //       pending: 'status-pending',
 // //       rejected: 'status-cancelled'
 // //     };
-    
+
 // //     return <span className={`status-badge ${statusColors[status] || ''}`}>{status}</span>;
 // //   };
 
@@ -293,7 +293,7 @@
 // //         ) : (
 // //           <div className="leave-section">
 // //             <h2>My Leave Requests</h2>
-            
+
 // //             {leaveRequests.length === 0 ? (
 // //               <div className="empty-state">
 // //                 <h3>No leave requests found</h3>
@@ -312,7 +312,7 @@
 // //                       </div>
 // //                       {getLeaveStatusBadge(request.status)}
 // //                     </div>
-                    
+
 // //                     <div className="leave-details">
 // //                       <p><strong>Reason:</strong> {request.reason}</p>
 // //                       <p><strong>Submitted:</strong> {formatDate(request.created_at)}</p>
@@ -358,7 +358,7 @@
 
 // //   const handleSubmit = async (e) => {
 // //     e.preventDefault();
-    
+
 // //     if (!formData.start_date || !formData.end_date || !formData.reason) {
 // //       alert('Please fill in all required fields');
 // //       return;
@@ -587,7 +587,7 @@
 //       late: 'badge-warning',
 //       half_day: 'badge-info'
 //     };
-    
+
 //     return <span className={`badge ${statusColors[status] || ''}`}>{status}</span>;
 //   };
 
@@ -597,7 +597,7 @@
 //       pending: 'badge-warning',
 //       rejected: 'badge-error'
 //     };
-    
+
 //     return <span className={`badge ${statusColors[status] || ''}`}>{status}</span>;
 //   };
 
@@ -744,7 +744,7 @@
 //         ) : (
 //           <div>
 //             <h2 className="text-xl font-semibold mb-4">My Leave Requests</h2>
-            
+
 //             {leaveRequests.length === 0 ? (
 //               <div className="text-center text-gray-500">
 //                 <h3 className="text-lg font-medium mb-1">No leave requests found</h3>
@@ -802,7 +802,7 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-    
+
 //     if (!formData.start_date || !formData.end_date || !formData.reason) {
 //       alert('Please fill in all required fields');
 //       return;
@@ -916,13 +916,13 @@
 import React, { useState, useEffect } from 'react';
 import staffService from '../../services/staffService';
 
-function LabTechnicianAttendance() {
+function LabTechnicianAttendance({ openLeaveModal }) {
   const [attendance, setAttendance] = useState([]);
   const [leaveRequests, setLeaveRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('attendance');
-  const [showLeaveModal, setShowLeaveModal] = useState(false);
+  const [activeTab, setActiveTab] = useState(openLeaveModal ? 'leave' : 'attendance');
+  const [showLeaveModal, setShowLeaveModal] = useState(openLeaveModal || false);
   const [filters, setFilters] = useState({
     start_date: new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0],
     end_date: new Date().toISOString().split('T')[0]
@@ -1036,7 +1036,7 @@ function LabTechnicianAttendance() {
       late: { label: 'Late', className: 'status-badge-warning' },
       half_day: { label: 'Half Day', className: 'status-badge-info' }
     };
-    
+
     const config = statusConfig[status] || { label: status, className: 'status-badge-default' };
     return (
       <span className={`status-badge ${config.className}`}>
@@ -1052,7 +1052,7 @@ function LabTechnicianAttendance() {
       pending: { label: 'Pending', className: 'status-badge-warning' },
       rejected: { label: 'Rejected', className: 'status-badge-error' }
     };
-    
+
     const config = statusConfig[status] || { label: status, className: 'status-badge-default' };
     return (
       <span className={`status-badge ${config.className}`}>
@@ -1950,13 +1950,13 @@ function LabTechnicianAttendance() {
 
       <div className="tabs-container">
         <div className="tabs-wrapper">
-          <button 
+          <button
             className={`tab-button ${activeTab === 'attendance' ? 'active' : ''}`}
             onClick={() => setActiveTab('attendance')}
           >
             Attendance
           </button>
-          <button 
+          <button
             className={`tab-button ${activeTab === 'leave' ? 'active' : ''}`}
             onClick={() => setActiveTab('leave')}
           >
@@ -2072,7 +2072,7 @@ function LabTechnicianAttendance() {
         ) : (
           <div className="leave-requests-container">
             <h2 className="section-title">My Leave Requests</h2>
-            
+
             {leaveRequests.length === 0 ? (
               <div className="empty-state">
                 <h3>No leave requests found</h3>
@@ -2135,7 +2135,7 @@ function RequestLeaveModal({ onClose, onSave }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.start_date || !formData.end_date || !formData.reason) {
       alert('Please fill in all required fields');
       return;
@@ -2155,12 +2155,12 @@ function RequestLeaveModal({ onClose, onSave }) {
     // <div className="modal-overlay" onClick={onClose}>
     //   <div className="modal-box" onClick={(e) => e.stopPropagation()}>
     // <div className="modal-overlay" onMouseDown={(e) =>
-     // e.target === e.currentTarget && onClose()}>
-  	<div
-  className="modal-overlay"
-  onClick={(e) => e.target === e.currentTarget && onClose()}
->
-  <div className="modal-box">
+    // e.target === e.currentTarget && onClose()}>
+    <div
+      className="modal-overlay"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div className="modal-box">
         <button onClick={onClose} className="close-btn">×</button>
         <div className="modal-header">
           <h2 className="modal-title">Request Leave</h2>

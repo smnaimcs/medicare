@@ -66,7 +66,7 @@
 // //       cancelled: 'status-cancelled',
 // //       rescheduled: 'status-pending'
 // //     };
-    
+
 // //     return <span className={`status-badge ${statusColors[status] || ''}`}>{status}</span>;
 // //   };
 
@@ -141,7 +141,7 @@
 // //                 </div>
 // //                 {getStatusBadge(appointment.status)}
 // //               </div>
-              
+
 // //               <div className="appointment-details">
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
@@ -153,7 +153,7 @@
 // //                     <span>Dr. {appointment.doctor.user.first_name} {appointment.doctor.user.last_name}</span>
 // //                   </div>
 // //                 </div>
-                
+
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
 // //                     <label>Specialization:</label>
@@ -697,10 +697,10 @@ function AdminAppointments() {
                 </svg>
                 Filter by Status
               </label>
-              <select 
-                name="status" 
-                value={filters.status} 
-                onChange={handleFilterChange} 
+              <select
+                name="status"
+                value={filters.status}
+                onChange={handleFilterChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               >
                 <option value="">All Status</option>
@@ -718,11 +718,11 @@ function AdminAppointments() {
                 </svg>
                 Filter by Date
               </label>
-              <input 
-                type="date" 
-                name="date" 
-                value={filters.date} 
-                onChange={handleFilterChange} 
+              <input
+                type="date"
+                name="date"
+                value={filters.date}
+                onChange={handleFilterChange}
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               />
             </div>
@@ -762,15 +762,14 @@ function AdminAppointments() {
         ) : (
           <div className="grid gap-6">
             {appointments.map((a, index) => (
-              <div 
-                key={a.id} 
-                className={`opacity-0 animate-fadeInUp ${
-                  index === 0 ? 'delay-100' : 
-                  index === 1 ? 'delay-200' : 
-                  index === 2 ? 'delay-300' : 
-                  index === 3 ? 'delay-400' : 
-                  'delay-500'
-                } appointment-card-hover bg-white rounded-xl shadow-md border border-gray-200 p-6`}
+              <div
+                key={a.id}
+                className={`opacity-0 animate-fadeInUp ${index === 0 ? 'delay-100' :
+                    index === 1 ? 'delay-200' :
+                      index === 2 ? 'delay-300' :
+                        index === 3 ? 'delay-400' :
+                          'delay-500'
+                  } appointment-card-hover bg-white rounded-xl shadow-md border border-gray-200 p-6`}
               >
                 {/* Card Header */}
                 <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 border-b border-gray-100 pb-4 mb-4">
@@ -782,7 +781,7 @@ function AdminAppointments() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-gray-800">
-                        {a.patient.user.first_name} {a.patient.user.last_name} 
+                        {a.patient.user.first_name} {a.patient.user.last_name}
                         <span className="text-sm font-normal text-gray-500"> with </span>
                         Dr. {a.doctor.user.first_name} {a.doctor.user.last_name}
                       </h3>
@@ -871,8 +870,8 @@ function AdminAppointments() {
 
                 {/* Card Footer */}
                 <div className="mt-6 flex justify-end">
-                  <button 
-                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex items-center gap-2" 
+                  <button
+                    className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex items-center gap-2"
                     onClick={() => handleEditAppointment(a)}
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -887,10 +886,10 @@ function AdminAppointments() {
         )}
 
         {showEditModal && selectedAppointment && (
-          <EditAppointmentModal 
-            appointment={selectedAppointment} 
-            onClose={() => { setShowEditModal(false); setSelectedAppointment(null); }} 
-            onSave={handleUpdateAppointment} 
+          <EditAppointmentModal
+            appointment={selectedAppointment}
+            onClose={() => { setShowEditModal(false); setSelectedAppointment(null); }}
+            onSave={handleUpdateAppointment}
           />
         )}
       </div>
@@ -925,8 +924,8 @@ function EditAppointmentModal({ appointment, onClose, onSave }) {
             </div>
             <h2 className="text-2xl font-bold text-gray-800">Edit Appointment</h2>
           </div>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 hover:rotate-90"
           >
             <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -971,11 +970,11 @@ function EditAppointmentModal({ appointment, onClose, onSave }) {
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Status *
             </label>
-            <select 
-              name="status" 
-              value={formData.status} 
-              onChange={handleChange} 
-              required 
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
             >
               <option value="pending">Pending</option>
@@ -989,12 +988,12 @@ function EditAppointmentModal({ appointment, onClose, onSave }) {
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Appointment Date & Time *
             </label>
-            <input 
-              type="datetime-local" 
-              name="appointment_date" 
-              value={formData.appointment_date} 
-              onChange={handleChange} 
-              required 
+            <input
+              type="datetime-local"
+              name="appointment_date"
+              value={formData.appointment_date}
+              onChange={handleChange}
+              required
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
             />
           </div>
@@ -1003,29 +1002,29 @@ function EditAppointmentModal({ appointment, onClose, onSave }) {
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Duration (minutes) *
             </label>
-            <input 
-              type="number" 
-              name="duration" 
-              value={formData.duration} 
-              onChange={handleChange} 
-              min="15" 
-              max="120" 
-              required 
+            <input
+              type="number"
+              name="duration"
+              value={formData.duration}
+              onChange={handleChange}
+              min="15"
+              max="120"
+              required
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
             />
           </div>
 
           <div className="flex justify-end gap-3 pt-4">
-            <button 
-              type="button" 
-              onClick={onClose} 
+            <button
+              type="button"
+              onClick={onClose}
               className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-lg transition-all duration-200"
             >
               Cancel
             </button>
-            <button 
-              type="submit" 
-              disabled={loading} 
+            <button
+              type="submit"
+              disabled={loading}
               className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Updating..." : "Update Appointment"}

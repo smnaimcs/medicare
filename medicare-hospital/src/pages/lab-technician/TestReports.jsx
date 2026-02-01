@@ -134,7 +134,7 @@
 // //                 </div>
 // //                 {getStatusBadge(report.status)}
 // //               </div>
-              
+
 // //               <div className="test-report-details">
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
@@ -146,7 +146,7 @@
 // //                     <span>{formatDate(report.requested_date)}</span>
 // //                   </div>
 // //                 </div>
-                
+
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
 // //                     <label>Result:</label>
@@ -234,7 +234,7 @@
 
 // //   const handleSubmit = async (e) => {
 // //     e.preventDefault();
-    
+
 // //     if (!formData.test_name || !formData.test_type || !formData.result) {
 // //       alert('Please fill in all required fields');
 // //       return;
@@ -514,7 +514,7 @@
 //                   </div>
 //                   {getStatusBadge(report.status)}
 //                 </div>
-                
+
 //                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 //                   <div className="space-y-2">
 //                     <p><span className="font-semibold">Test Type:</span> {report.test_type}</p>
@@ -579,7 +579,7 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-    
+
 //     if (!formData.test_name || !formData.test_type || !formData.result) {
 //       alert('Please fill in all required fields');
 //       return;
@@ -738,11 +738,11 @@
 import React, { useState, useEffect } from 'react';
 import staffService from '../../services/staffService';
 
-function LabTechnicianTestReports() {
+function LabTechnicianTestReports({ openUploadModal }) {
   const [testReports, setTestReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [showUploadModal, setShowUploadModal] = useState(openUploadModal || false);
   const [filters, setFilters] = useState({
     test_type: '',
     status: ''
@@ -795,7 +795,7 @@ function LabTechnicianTestReports() {
   };
 
   const getStatusBadge = (status) => {
-    return status === 'completed' ? 
+    return status === 'completed' ?
       <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold bg-gradient-to-br from-emerald-50 to-green-50 text-emerald-700 border border-emerald-200">
         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
         Completed
@@ -892,7 +892,7 @@ function LabTechnicianTestReports() {
           <h1 className="text-4xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent tracking-tight">
             Test Reports Management
           </h1>
-          <button 
+          <button
             onClick={() => setShowUploadModal(true)}
             className="group relative px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden"
           >
@@ -911,9 +911,9 @@ function LabTechnicianTestReports() {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <label className="block text-sm font-semibold text-gray-700 mb-2">Test Type:</label>
-              <select 
-                name="test_type" 
-                value={filters.test_type} 
+              <select
+                name="test_type"
+                value={filters.test_type}
                 onChange={handleFilterChange}
                 className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 outline-none font-medium text-gray-700"
               >
@@ -927,9 +927,9 @@ function LabTechnicianTestReports() {
             </div>
             <div className="flex-1">
               <label className="block text-sm font-semibold text-gray-700 mb-2">Status:</label>
-              <select 
-                name="status" 
-                value={filters.status} 
+              <select
+                name="status"
+                value={filters.status}
                 onChange={handleFilterChange}
                 className="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100 transition-all duration-300 outline-none font-medium text-gray-700"
               >
@@ -960,17 +960,17 @@ function LabTechnicianTestReports() {
         ) : (
           <div className="space-y-6">
             {testReports.map((report, index) => (
-              <div 
-                key={report.id} 
+              <div
+                key={report.id}
                 className="bg-white rounded-2xl shadow-lg border border-gray-200/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden animate-cardSlideUp"
-                style={{ 
+                style={{
                   animationDelay: `${0.3 + index * 0.1}s`,
                   animationFillMode: 'backwards'
                 }}
               >
                 {/* Card top accent */}
                 <div className="h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-                
+
                 <div className="p-6 space-y-6">
                   {/* Header */}
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -995,7 +995,7 @@ function LabTechnicianTestReports() {
                     </div>
                     {getStatusBadge(report.status)}
                   </div>
-                  
+
                   {/* Details Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Left Column */}
@@ -1011,7 +1011,7 @@ function LabTechnicianTestReports() {
                           <p className="text-base font-semibold text-gray-900 capitalize">{report.test_type}</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
                           <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1023,7 +1023,7 @@ function LabTechnicianTestReports() {
                           <p className="text-base font-semibold text-gray-900">{formatDate(report.requested_date)}</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
                           <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1035,7 +1035,7 @@ function LabTechnicianTestReports() {
                           <p className="text-base font-semibold text-gray-900">{formatDate(report.completed_date)}</p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
                           <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1062,7 +1062,7 @@ function LabTechnicianTestReports() {
                           <p className="text-base font-mono font-bold text-gray-900 bg-white px-3 py-1.5 rounded-lg border border-gray-200 mt-1">{report.result}</p>
                         </div>
                       </div>
-                      
+
                       {report.normal_range && (
                         <div className="flex items-start gap-3">
                           <div className="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1076,7 +1076,7 @@ function LabTechnicianTestReports() {
                           </div>
                         </div>
                       )}
-                      
+
                       {report.units && (
                         <div className="flex items-start gap-3">
                           <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1090,7 +1090,7 @@ function LabTechnicianTestReports() {
                           </div>
                         </div>
                       )}
-                      
+
                       {report.comments && (
                         <div className="flex items-start gap-3">
                           <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -1163,7 +1163,7 @@ function UploadTestReportModal({ onClose, onSave }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.test_name || !formData.test_type || !formData.result) {
       alert('Please fill in all required fields');
       return;
@@ -1175,7 +1175,7 @@ function UploadTestReportModal({ onClose, onSave }) {
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn"
       onClick={onClose}
     >
@@ -1201,8 +1201,8 @@ function UploadTestReportModal({ onClose, onSave }) {
           animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}</style>
-      
-      <div 
+
+      <div
         className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto animate-modalSlideUp"
         onClick={(e) => e.stopPropagation()}
       >
@@ -1211,7 +1211,7 @@ function UploadTestReportModal({ onClose, onSave }) {
           <h3 className="text-3xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
             Upload Test Report
           </h3>
-          <button 
+          <button
             onClick={onClose}
             className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200"
           >
@@ -1345,15 +1345,15 @@ function UploadTestReportModal({ onClose, onSave }) {
 
           {/* Modal Footer */}
           <div className="flex flex-col sm:flex-row gap-3 justify-end pt-6 border-t border-gray-200">
-            <button 
-              type="button" 
+            <button
+              type="button"
               onClick={onClose}
               className="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-300"
             >
               Cancel
             </button>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:-translate-y-0.5 shadow-lg hover:shadow-xl"
             >

@@ -72,7 +72,7 @@
 // //       cancelled: 'status-cancelled',
 // //       rescheduled: 'status-pending'
 // //     };
-    
+
 // //     return <span className={`status-badge ${statusColors[status] || ''}`}>{status}</span>;
 // //   };
 
@@ -135,7 +135,7 @@
 // //                 </div>
 // //                 {getStatusBadge(appointment.status)}
 // //               </div>
-              
+
 // //               <div className="appointment-details">
 // //                 <div className="detail-row">
 // //                   <div className="detail-item">
@@ -147,7 +147,7 @@
 // //                     <span>{appointment.duration} minutes</span>
 // //                   </div>
 // //                 </div>
-                
+
 // //                 <div className="detail-item">
 // //                   <label>Reason:</label>
 // //                   <span>{appointment.reason}</span>
